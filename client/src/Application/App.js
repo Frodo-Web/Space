@@ -1,9 +1,12 @@
 import React from 'react';
+import StartPage from './StartPage/StartPage';
 
 const App = () => {
 	return (
-	<h2>Hello, React!</h2>
-           )
+		<>
+			<StartPage />
+		</>
+	)
 };
 
 export default App;
