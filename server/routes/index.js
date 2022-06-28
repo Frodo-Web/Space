@@ -1,14 +1,10 @@
 const express = require('express');
 const router = express.Router();
+const indexController = require('../controllers/indexController');
 
-router.get('/', (req, res) => {
-    res.json("Start page");
-});
-router.post('/sign-in', (req, res) => {
-    res.json("Sign in");
-});
-router.post('/sign-up', (req, res) => {
-    res.json("Sign up");
-});
+router.get('/', indexController.index_GET);
+
+router.post('/sign-in', indexController.signIn_POST);
+router.post('/sign-up', indexController.signUp_POST);
 
 module.exports = router;

@@ -16,7 +16,8 @@
     row-gap: 10px; 
 }
 
-.loginForm > form input[type="text"]{
+.loginForm > form input[type="text"],
+.loginForm > form input[type="password"]{
     flex-basis: 20%;
     font-size: 24px;
     width: 60%;
@@ -30,6 +31,7 @@
 }
 .loginForm > form button:hover {
     background-color: #365899;
+    cursor: pointer;
 }
 .loginForm > form button.login {
     flex-basis: 20%;
@@ -37,9 +39,11 @@
 }
 .loginForm > form button.createNew {
     flex-basis: 20%;
+    cursor: pointer;
     width: 40%;
 }
-.loginForm > form input[type="text"]::placeholder{
+.loginForm > form input[type="text"]::placeholder,
+.loginForm > form input[type="password"]::placeholder{
     font-size: 24px;
     opacity: 0.4;
     color: grey;

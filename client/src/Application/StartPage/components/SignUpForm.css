@@ -41,7 +41,8 @@
       color: rgb(70, 88, 252);
       cursor: pointer;
   }
-  .signUpForm > form input[type="text"]{
+  .signUpForm > form input[type="text"],
+  .signUpForm > form input[type="password"]{
     border-radius: 15px;
   /*  flex-basis: 20%; */
     flex-grow: 1;
@@ -53,4 +54,15 @@
     flex-grow: 1;
     min-height: 50px;
     width: 60%;
+}
+.signUpForm > form button.signUp {
+    background-color: #166fe5;
+    border-color: #365899;
+    border-radius: 6px;
+    font-size: 20px;
+    color: #fff;
+}
+.signUpForm > form button.signUp:hover {
+    background-color: #365899;
+    cursor: pointer;
 }

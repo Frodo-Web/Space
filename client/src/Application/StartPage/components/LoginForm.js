@@ -12,7 +12,7 @@ const LoginForm = () => {
         <div className='loginForm'>
             <form>
                 <input type="text" placeholder='Email' />
-                <input type="text" placeholder='Password' />
+                <input type="password" placeholder='Password' />
                 <button className='login' type="submit">Login</button>
                 <button className='createNew' type="button" onClick={handleClick}>Create new account</button>
             </form>
