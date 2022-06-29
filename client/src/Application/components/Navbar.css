@@ -1,0 +1,13 @@
+div#root > div.navbar {
+  position: fixed;
+  bottom: 0px;
+  left: 0px;
+}
+div#root > div.navbar > nav {
+  display: flex; 
+  column-gap: 10px;
+  padding: 10px;
+}
+div#root > div.navbar > nav > a {
+  font-size: 24px;
+}

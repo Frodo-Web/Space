@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack",
-    "buildwatch": "webpack --watch",
+    "build": "webpack --env.file=development",
+    "buildwatch": "webpack --watch --env file=development",
     "start": "webpack-dev-server",
     "serverstart": "node server/app.js",
     "serverwatch": "nodemon --watch server server/app.js"
@@ -28,6 +28,7 @@
     "@babel/preset-react": "^7.17.12",
     "babel-loader": "^8.2.5",
     "css-loader": "^6.7.1",
+    "dotenv-webpack": "^7.1.1",
     "mongodb-memory-server": "^8.7.1",
     "nodemon": "^2.0.18",
     "react": "^18.1.0",
