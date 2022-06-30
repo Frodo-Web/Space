@@ -1,0 +1,37 @@
+.users-table {
+  border-collapse: collapse;
+  margin: 25px auto;
+  font-size: 24px;
+  background-color: rgb(8, 139, 247);
+  color: white;
+  border-radius: 5px;
+  box-shadow: 0px 10px 30px 5px rgba(0,0,0,0.15);
+}
+.users-table tr td {
+  width: 30%;
+}
+.users-table thead tr {
+  border-bottom: 1px solid rgb(152, 230, 152);
+}
+.users-table thead tr td {
+  text-align: center;
+  font-weight: bold;
+  font-size: 28px;
+  letter-spacing: 1px;
+  padding: 10px;
+}
+.users-table tbody tr td {
+  padding: 4px;
+  text-align: center;
+}
+.users-table tbody tr:hover {
+  background-color: rgb(4, 196, 255);
+}
+.users-table tfoot tr {
+  border-top: 1px solid rgb(152, 230, 152);
+}
+.users-table tfoot tr td {
+  font-weight: bold;
+  font-size: 32px;
+  padding: 10px;
+}

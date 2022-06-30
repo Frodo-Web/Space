@@ -6,10 +6,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --env.file=development",
-    "buildwatch": "webpack --watch --env file=development",
+    "buildclientwatch": "webpack --watch --env file=development",
     "start": "webpack-dev-server",
     "serverstart": "node server/app.js",
-    "serverwatch": "nodemon --watch server server/app.js"
+    "buildserverwatch": "nodemon --watch server server/app.js"
   },
   "repository": {
     "type": "git",

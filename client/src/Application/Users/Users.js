@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import './Users.css';
 
 const Users = () => {
     const [users, setUsers] = useState(null);
@@ -11,6 +12,7 @@ const Users = () => {
             let response = await fetch(BASE_URL + '/users')
             if (response.status === 200) {
                 response = await response.json();
+                setUsers(response)
                 console.log(response);
             }
             else {
@@ -25,6 +27,30 @@ const Users = () => {
     };
     return (
         <div className='users'>
+            <table className='users-table'>
+                <thead>
+                    <tr>
+                        <td>User ID</td>
+                        <td>First name</td>
+                        <td>Last name</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    {(users) ? users.map(user =>
+                        <tr>
+                            <td>{user._id}</td>
+                            <td>{user.firstname}</td>
+                            <td>{user.lastname}</td>
+                        </tr>
+                    ) : ''}
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="2" align="right">Users count:</td>
+                        <td align="center">{(users) ? users.length : '0'}</td>
+                    </tr>
+                </tfoot>
+            </table>
         </div>
     )
 }
