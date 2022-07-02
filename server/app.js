@@ -1,5 +1,6 @@
 require('dotenv').config();
 const express = require('express');
+const cookieParser = require('cookie-parser');
 const path = require('path');
 const mongoose = require("mongoose");
 const { initializeMongoServer } = require('./db/mongoConfigTesting.js');
@@ -9,6 +10,7 @@ const port = process.env.PORT || 3000;
 initializeMongoServer();
 
 const app = express();
+app.use(cookieParser());
 const publicDirectory = path.join(__dirname + '/../client/public');
 
 app.use(express.static(publicDirectory));

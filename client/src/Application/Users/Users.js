@@ -3,6 +3,7 @@ import './Users.css';
 
 const Users = () => {
     const [users, setUsers] = useState(null);
+    const [info, setInfo] = useState(null);
     useEffect(() => {
         fetchUsers();
     }, [])
@@ -13,9 +14,13 @@ const Users = () => {
             if (response.status === 200) {
                 response = await response.json();
                 setUsers(response)
-                console.log(response);
             }
-            else {
+            else if (response.status === 403 ) {
+                setInfo('You need to LogIn to see the table');
+            } 
+            else if (response.status === 401) {
+                setInfo('Invalid token');
+            } else {
                 console.log('Fetch Users: response status !== 200');
             }
             
@@ -27,12 +32,13 @@ const Users = () => {
     };
     return (
         <div className='users'>
-            <table className='users-table'>
+            <table className='users-table' style={(users !== null ? {visibility: 'visible'} : {visibility: 'hidden'} )} >
                 <thead>
                     <tr>
                         <td>User ID</td>
                         <td>First name</td>
                         <td>Last name</td>
+                        <td>Registered At</td>
                     </tr>
                 </thead>
                 <tbody>
@@ -41,16 +47,18 @@ const Users = () => {
                             <td>{user._id}</td>
                             <td>{user.firstname}</td>
                             <td>{user.lastname}</td>
+                            <td>{user.registeredAt}</td>
                         </tr>
                     ) : ''}
                 </tbody>
                 <tfoot>
                     <tr>
                         <td colspan="2" align="right">Users count:</td>
-                        <td align="center">{(users) ? users.length : '0'}</td>
+                        <td colspan="2" align="left">{(users) ? users.length : '0'}</td>
                     </tr>
                 </tfoot>
             </table>
+            {(info !== null ? <h2 className='info'>{info}</h2> : null)}
         </div>
     )
 }

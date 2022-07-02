@@ -11,7 +11,8 @@ const userSchema = new Schema(
             url: { type: String },
             contentType: { type: String }
         },
-        friends: [{type: Schema.Types.ObjectId, ref: 'User'}]
+        friends: [{type: Schema.Types.ObjectId, ref: 'User'}],
+        registeredAt: { type: Date, default: () => Date.now() }
     }
 );
 
