@@ -30,6 +30,7 @@ const Navbar = () => {
         <div className='navbar'>
             <nav>
                 <NavLink to='/'>Home</NavLink>
+                <NavLink to='/space'>Space</NavLink>
                 <NavLink to='/users'>Users</NavLink>
                 <a onClick={handleLogout}>Logout</a>
             </nav>

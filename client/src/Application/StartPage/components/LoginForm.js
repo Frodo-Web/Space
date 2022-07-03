@@ -20,18 +20,18 @@ const LoginForm = () => {
         try {
             e.preventDefault();
             const BASE_URL = process.env.REACT_APP_BASE_URL;
-            let response = await fetch(BASE_URL + '/sign-in', {
+            const response = await fetch(BASE_URL + '/sign-in', {
                 method: 'POST',
                 body: JSON.stringify(formData),
                 headers: {
                     'Content-Type': 'application/json'
                 }
             })
+            const jsonResponse = await response.json();
             if (response.status === 200) {
-                response = await response.json();
-                console.log(response);
+                console.log(jsonResponse);
             } else {
-                console.log('Auth fail');
+                console.log(jsonResponse);
             }
         } catch(error) {
             console.log(error);

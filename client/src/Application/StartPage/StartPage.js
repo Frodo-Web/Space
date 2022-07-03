@@ -18,7 +18,6 @@ const StartPage = () => {
             });
             if (response.status === 200) {
                 response = await response.json();
-                console.log(response);
             }
             else {
                 console.log('Fetch Index: response status !== 200');

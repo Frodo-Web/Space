@@ -1,6 +1,6 @@
 const User = require('../models/user');
 
-exports.index = (req, res, next) => {
+exports.index = async (req, res, next) => {
     async function findUsers(callback) {
         try {
             const users = await User.find({}, '_id firstname lastname registeredAt').sort({registeredAt: 'desc'}).lean();
