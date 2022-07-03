@@ -13,7 +13,7 @@ exports.index_GET = async (req, res, next) => {
 exports.logout_GET = async (req, res, next) => {
 //    res.cookie('token', '', { expires: new Date(Date.now() + 1), httpOnly: true} );
     res.clearCookie('token', { httpOnly: true });
-    res.redirect('/');
+    res.status(200).json({info: 'Logout successfully'});
 }
 exports.signIn_POST = async (req, res, next) => {
     try {

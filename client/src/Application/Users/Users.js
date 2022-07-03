@@ -10,7 +10,13 @@ const Users = () => {
     const fetchUsers = async () => {
         try {
             const BASE_URL = process.env.REACT_APP_BASE_URL;
-            let response = await fetch(BASE_URL + '/users')
+            let response = await fetch(BASE_URL + '/users', {
+                method: 'GET',
+                cache: 'no-cache',
+                headers: {
+                    'Accept': 'application/json'
+                },
+            });
             if (response.status === 200) {
                 response = await response.json();
                 setUsers(response)

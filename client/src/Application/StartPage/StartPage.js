@@ -9,7 +9,13 @@ const StartPage = () => {
     const fetchIndex = async () => {
         try {
             const BASE_URL = process.env.REACT_APP_BASE_URL;
-            let response = await fetch(BASE_URL + '/index');
+            let response = await fetch(BASE_URL + '/index', {
+                method: 'GET',
+                cache: 'no-cache',
+                headers: {
+                    'Accept': 'application/json'
+                },
+            });
             if (response.status === 200) {
                 response = await response.json();
                 console.log(response);
