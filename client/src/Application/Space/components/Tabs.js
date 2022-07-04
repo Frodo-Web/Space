@@ -1,11 +1,11 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 
 const Tabs = () => {
     return (
         <div className='tabs'>
             <nav>
-                <NavLink to='/space'>Wall</NavLink>
+                <Link to='/space'>Wall</Link>
                 <NavLink to='/space/friends'>Friends</NavLink>
             </nav>
         </div>

@@ -4,7 +4,6 @@ const cookieParser = require('cookie-parser');
 const path = require('path');
 const mongoose = require("mongoose");
 const { initializeMongoServer } = require('./db/mongoConfigTesting.js');
-const { index } = require('./controllers/usersController.js');
 const historyAPIfallback = require("./middleware/historyAPIfallback");
 
 
@@ -24,6 +23,7 @@ app.use(express.json());
 
 app.use('/', require('./routes/index'));
 app.use('/users', require('./routes/users'));
+app.use('/space', require('./routes/space'));
 
 app.listen(port, function () {
 	console.log(`listening on port ${port}`);
