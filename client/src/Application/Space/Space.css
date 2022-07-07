@@ -1,0 +1,27 @@
+#root .space.info {
+    width: max-content;
+    margin: 0 auto;
+    margin-top: 50vh;
+}
+#root > div.space {
+    display: flex;
+}
+@media (max-width: 600px) {
+    #root > div.space {
+       display: flex;
+       flex-direction: column;
+       align-items: center;
+    }
+ }
+div.space > div.tabs {
+    width: max-content;
+}
+div.space > div.wall {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-grow: 1; 
+}
+div.space > div.wall > div {
+    width: max-content;
+}

@@ -1,5 +1,7 @@
-.users > h2.info {
-  text-align: center;
+#root .users.info {
+  width: max-content;
+  margin: 0 auto;
+  margin-top: 50vh;
 }
 .users-table {
   border-collapse: collapse;

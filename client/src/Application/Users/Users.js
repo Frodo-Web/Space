@@ -37,35 +37,42 @@ const Users = () => {
         }
     };
     return (
-        <div className='users'>
-            <table className='users-table' style={(users !== null ? {visibility: 'visible'} : {visibility: 'hidden'} )} >
-                <thead>
-                    <tr>
-                        <td>User ID</td>
-                        <td>First name</td>
-                        <td>Last name</td>
-                        <td>Registered At</td>
-                    </tr>
-                </thead>
-                <tbody>
-                    {(users) ? users.map(user =>
-                        <tr>
-                            <td>{user._id}</td>
-                            <td>{user.firstname}</td>
-                            <td>{user.lastname}</td>
-                            <td>{user.registeredAt}</td>
-                        </tr>
-                    ) : ''}
-                </tbody>
-                <tfoot>
-                    <tr>
-                        <td colspan="2" align="right">Users count:</td>
-                        <td colspan="2" align="left">{(users) ? users.length : '0'}</td>
-                    </tr>
-                </tfoot>
-            </table>
-            {(info !== null ? <h2 className='info'>{info}</h2> : null)}
-        </div>
+        <>
+            {(users !== null)
+                ?
+                <div className='users'>
+                    <table className='users-table' style={(users !== null ? { visibility: 'visible' } : { visibility: 'hidden' })} >
+                        <thead>
+                            <tr>
+                                <td>User ID</td>
+                                <td>First name</td>
+                                <td>Last name</td>
+                                <td>Registered At</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {(users) ? users.map(user =>
+                                <tr>
+                                    <td>{user._id}</td>
+                                    <td>{user.firstname}</td>
+                                    <td>{user.lastname}</td>
+                                    <td>{user.registeredAt}</td>
+                                </tr>
+                            ) : ''}
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="2" align="right">Users count:</td>
+                                <td colspan="2" align="left">{(users) ? users.length : '0'}</td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+                :
+                null
+            }
+            {(info !== null ? <h2 className='users info'>{info}</h2> : null)}
+        </>
     )
 }
 

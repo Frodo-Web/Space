@@ -4,6 +4,7 @@ import Tabs from './components/Tabs';
 import Wall from './components/Wall';
 import Friends from './components/Friends';
 import NoMatch from './components/NoMatch';
+import './Space.css';
 
 const Space = () => {
     const [user, setUser] = useState(null);
@@ -54,7 +55,7 @@ const Space = () => {
                     </Route>
                 </Routes>
                 :
-                <h2 className='info'>{info}</h2>
+                <h2 className='space info'>{info}</h2>
             }
         </>
     )

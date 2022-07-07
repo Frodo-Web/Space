@@ -1,0 +1,29 @@
+div.tabs {
+    margin: 10px 10px;
+}
+div.tabs > nav {
+    display: flex;
+    flex-direction: column;
+    row-gap: 15px;
+}
+@media (max-width: 600px) {
+    div.tabs > nav {
+       display: flex;
+       flex-direction: row;
+       flex-wrap: wrap;
+       gap: 15px;
+    }
+ }
+div.tabs > nav > a {
+    font-size: 2em;
+    padding: 15px;
+    transition: background-color 1s;
+    color: white;
+    width: 100%;
+    text-align: center;
+    border-radius: 15px;
+    background-color: #4682B4;
+}
+div.tabs > nav > a.active {
+    background-color: rgb(122, 243, 243);
+}
