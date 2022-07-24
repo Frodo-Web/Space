@@ -1,0 +1,25 @@
+.space > .wall {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1; 
+}
+.space > .wall > div {
+    width: max-content;
+}
+.space .wall .submit-post {
+    width: 70vw;
+  
+}
+.space .wall .submit-post form {
+
+}
+.space .wall form textarea {
+    resize: none;
+    width: 100%;
+
+}
+.space .wall form textarea:invalid {
+    border: 2px dashed red;
+  }

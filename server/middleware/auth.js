@@ -10,7 +10,8 @@ const authDrop = (req, res, next) => {
     try {
         const decoded = jwt.verify(token, config.JWT_SECRET);
         req.user = decoded;
-        console.log(req.user)
+     //   console.log('auth success');
+     //   console.log(req.user);
     } catch (err) {
         return res.status(401).json({ error: "Invalid Token" });
     }
