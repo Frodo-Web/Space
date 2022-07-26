@@ -1,9 +1,12 @@
 import { useState, useEffect, useCallback } from "react";
+import { useNavigate } from 'react-router-dom';
 
 function useFetch(bottomPostTime) {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
     const [posts, setPosts] = useState([]);
+
+    const navigate = useNavigate();
 
     console.log('inside useFetch');
 
@@ -25,6 +28,8 @@ function useFetch(bottomPostTime) {
                 console.log(`getMorePosts response: ${response}`);
                 await setPosts((prev) => [...prev, ...response]);
                 setLoading(false);
+            } else if (response.status === 403) {
+                navigate('/');
             } else {
                 console.log('useFetch: response status !== 200');
             }

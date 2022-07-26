@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './LoginForm.css';
 import SignUpForm from './SignUpForm';
-
+import { useNavigate } from 'react-router-dom';
 
 const initialFormData = Object.freeze({
     email: "",
@@ -11,6 +11,8 @@ const initialFormData = Object.freeze({
 const LoginForm = () => {
 
     const [showForm, setShowForm] = useState(false);
+    const navigate = useNavigate();
+
     const handleClick = () => {
         setShowForm(!showForm);
     }
@@ -30,6 +32,7 @@ const LoginForm = () => {
             const jsonResponse = await response.json();
             if (response.status === 200) {
                 console.log(jsonResponse);
+                navigate('/space');
             } else {
                 console.log(jsonResponse);
             }

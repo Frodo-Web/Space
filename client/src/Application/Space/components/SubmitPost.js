@@ -1,13 +1,15 @@
 import React, { useState, memo } from 'react';
+import { useNavigate } from "react-router-dom";
 
 
 const initialFormData = Object.freeze({
     text: "",
 });
 
-const SubmitPost = ( {fetchWall} ) => {
+const SubmitPost = () => {
 
     const [formData, updateFormData] = useState(initialFormData);
+    const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         try {
@@ -23,7 +25,7 @@ const SubmitPost = ( {fetchWall} ) => {
             const jsonResponse = await response.json();
             if (response.status === 200) {
                 console.log(jsonResponse);
-  //              fetchWall();
+                navigate(0);
             } else {
                 console.log(jsonResponse);
             }
