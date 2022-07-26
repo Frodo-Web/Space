@@ -36,6 +36,7 @@ const Users = () => {
             console.log(e)
         }
     };
+    console.log("User.js renders");
     return (
         <>
             {(users !== null)

@@ -6,6 +6,7 @@ import Space from './Space/Space';
 import Navbar from './components/Navbar'; 
 
 const App = () => {
+        console.log("App.js renders");
 	return (
 		<>
 			<BrowserRouter>

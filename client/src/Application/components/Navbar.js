@@ -26,6 +26,7 @@ const Navbar = () => {
             console.log(error)
         }
     }
+    console.log("Navbar.js renders");
     return (
         <div className='navbar'>
             <nav>

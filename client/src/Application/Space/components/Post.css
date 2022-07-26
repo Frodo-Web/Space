@@ -1,0 +1,5 @@
+.wall-posts .post .name,
+.wall-posts .post .local-time,
+.wall-posts .post .text {
+    font-size: 34px;
+}

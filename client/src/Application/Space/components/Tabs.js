@@ -3,6 +3,7 @@ import { NavLink, Link } from 'react-router-dom';
 import './Tabs.css';
 
 const Tabs = () => {
+    console.log("Tabs.js renders");
     return (
         <div className='tabs'>
             <nav>

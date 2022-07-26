@@ -1,20 +1,56 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 import './Wall.css';
+import SubmitPost from './SubmitPost';
 import Post from './Post';
-
-
-const initialFormData = Object.freeze({
-    text: "",
-});
+import useFetch from './hooks/useFetch';
 
 const Wall = () => {
 
-    const [formData, updateFormData] = useState(initialFormData);
-    const [posts, setPosts] = useState(null);
-    useEffect(() => {
-        fetchWall();
-    }, [])
+    //   const [posts, setPosts] = useState(null);
+    const [bottomPostTime, setBottomPostTime] = useState(1);
+    const [scrollCount, setScrollCount] = useState(0);
+    //   const { loading, error, list } = useFetch(bottomPostTime);
+    const { loading, error, posts } = useFetch(bottomPostTime);
 
+    const wallEnd = useRef(null);
+
+    const handleObserver = useCallback((entries) => {
+        const target = entries[0];
+        if (target.isIntersecting) {
+            console.log('Intersecting');
+            console.log(target);
+            setScrollCount(prev => prev + 1);
+            //         if (posts.length > 0) console.log(posts[posts.length - 1].time);
+            //         if (posts.length > 0) setBottomPostTime(posts[posts.length - 1].time);
+        }
+    }, []);
+    useEffect(() => {
+        console.log("I'm scrolling");
+        if (posts.length > 0) setBottomPostTime(posts[posts.length - 1].time)
+    }, [scrollCount])
+    useEffect(() => {
+        const option = {
+            root: null,
+            rootMargin: "20px",
+            threshold: 0
+        };
+        const observer = new IntersectionObserver(handleObserver, option);
+        if (wallEnd.current) observer.observe(wallEnd.current);
+    }, [handleObserver]);
+
+    console.log(`bottomPostTime: ${bottomPostTime}`)
+    
+    /*
+    useEffect(() => {
+        if (posts.length > 0) {
+            console.log(posts[posts.length - 1].time);
+            setBottomPostTime(posts[posts.length - 1].time);
+        };
+    }, [posts]);
+*/
+
+/*
+    const memoizedCallback = useCallback(() => fetchWall(), []);
     const fetchWall = async () => {
         try {
             const BASE_URL = process.env.REACT_APP_BASE_URL;
@@ -30,7 +66,7 @@ const Wall = () => {
                 setPosts(response);
             } else {
                 console.log('Fetch Wall: response status !== 200');
-                setPosts([ { message: 'Fetch Wall: Something went wrong...' } ]);
+                setPosts([{ message: 'Fetch Wall: Something went wrong...' }]);
             }
 
         }
@@ -39,43 +75,24 @@ const Wall = () => {
             console.log(e);
         }
     };
-    const handleSubmit = async (e) => {
-        try {
-            e.preventDefault();
-            const BASE_URL = process.env.REACT_APP_BASE_URL;
-            const response = await fetch(BASE_URL + '/space/wall-post', {
-                method: 'POST',
-                body: JSON.stringify(formData),
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            })
-            const jsonResponse = await response.json();
-            if (response.status === 200) {
-                console.log(jsonResponse);
-                fetchWall();
-            } else {
-                console.log(jsonResponse);
-            }
-        } catch (error) {
-            console.log(error);
-        }
-    }
-
-    const handleChange = (e) => {
-        updateFormData({ ...formData, [e.target.name]: e.target.value.trim() })
-    }
-
+*/
+    console.log("Wall.js renders");
     return (
         <div className='wall'>
-            <div className='submit-post'>
-                <form onSubmit={handleSubmit}>
-                    <textarea name='text' type="text" placeholder='Hello...' minlength="1" onChange={handleChange} />
-                    <button className='post-button' type="submit">Post</button>
-                </form>
-            </div>
+            {/* <SubmitPost fetchWall={memoizedCallback} /> */}
+            <SubmitPost />
             <div className='wall-posts'>
-                {posts && posts.map((post) => <Post post={post} />)}
+                {
+                    posts &&
+                    posts.map((post, index) => {
+                        //   if(index + 1 < posts.length) return <Post post={post} />
+                        //   if(index + 1 === posts.length) return <Post ref={wallEnd} post={post} />
+                        return <Post post={post} />
+                    })
+                }
+                {loading && <p>Loading...</p>}
+                {error && <p>Error!</p>}
+                <div className='wall-end' ref={wallEnd}></div>
             </div>
         </div>
     )

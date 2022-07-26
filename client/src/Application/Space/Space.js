@@ -43,6 +43,7 @@ const Space = () => {
             console.log(e);
         }
     };
+    console.log("Space.js renders");
     return (
         <>
             {(user !== null)
