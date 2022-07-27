@@ -14,5 +14,5 @@
     }
  }
 div.space > div.tabs {
-    width: max-content;
+ /*   width: max-content; */
 }

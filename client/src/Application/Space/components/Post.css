@@ -1,5 +1,20 @@
-.wall-posts .post .name,
-.wall-posts .post .local-time,
-.wall-posts .post .text {
-    font-size: 34px;
+.wall-posts .post {
+    border: 2px solid black;
+    padding: 10px;
 }
+.wall-posts .post .name,
+.wall-posts .post .text {
+    font-size: 2.2vh;
+}
+.wall-posts .post .local-time {
+    font-size: 2vh;
+}
+@media (max-height: 800px) {
+    .wall-posts .post .name,
+    .wall-posts .post .text {
+        font-size: 3.0vh;
+    }
+    .wall-posts .post .local-time {
+        font-size: 2.8vh;
+    }
+ }

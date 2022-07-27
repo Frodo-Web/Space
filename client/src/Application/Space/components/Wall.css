@@ -1,25 +1,44 @@
 .space > .wall {
-    display: flex;
+ /*   display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: center; 
     align-items: center;
-    flex-grow: 1; 
+    flex-grow: 1;  */
+    position: relative;
 }
 .space > .wall > div {
-    width: max-content;
+ /*   width: max-content; 
 }
 .space .wall .submit-post {
-    width: 70vw;
+ /*   width: 70%; */
   
 }
-.space .wall .submit-post form {
-
+.space .wall form {
+    display: flex;
+    flex-direction: column;
+    row-gap: 5px;
+}
+.space .wall form button {
+    align-self: flex-end;
+    padding: 10px;
+    font-size: 2.2vh;
 }
 .space .wall form textarea {
     resize: none;
-    width: 100%;
+    width: 20vw;
+    height: 20vh;
 
 }
 .space .wall form textarea:invalid {
     border: 2px dashed red;
   }
+.space .wall .wall-posts {
+    display: flex;
+    flex-direction: column;
+    row-gap: 15px;
+}
+.space .wall .submit-post {
+    position: fixed;
+    right: 10%;
+    bottom: 10%;
+}

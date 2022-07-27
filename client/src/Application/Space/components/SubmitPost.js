@@ -6,7 +6,7 @@ const initialFormData = Object.freeze({
     text: "",
 });
 
-const SubmitPost = () => {
+const SubmitPost = ( { onPostUpdate } ) => {
 
     const [formData, updateFormData] = useState(initialFormData);
     const navigate = useNavigate();
@@ -25,7 +25,8 @@ const SubmitPost = () => {
             const jsonResponse = await response.json();
             if (response.status === 200) {
                 console.log(jsonResponse);
-                navigate(0);
+                onPostUpdate();
+          //      navigate(0);
             } else {
                 console.log(jsonResponse);
             }

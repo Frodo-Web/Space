@@ -8,7 +8,8 @@ const Wall = () => {
 
     const [bottomPostTime, setBottomPostTime] = useState(1);
     const [onScroll, setOnScroll] = useState(false);
-    const { loading, error, posts } = useFetch(bottomPostTime);
+    const [onPost, setOnPost] = useState(false);
+    const { loading, error, posts } = useFetch(bottomPostTime, onPost);
 
     const wallEnd = useRef(null);
 
@@ -33,11 +34,16 @@ const Wall = () => {
         const observer = new IntersectionObserver(handleObserver, option);
         if (wallEnd.current) observer.observe(wallEnd.current);
     }, [handleObserver]);
+
+    const onPostUpdate = () => {
+        setBottomPostTime(1);
+        setOnPost(prev => !prev)
+    }
     
     console.log("Wall.js renders");
     return (
         <div className='wall'>
-            <SubmitPost />
+            <SubmitPost onPostUpdate={onPostUpdate} />
             <div className='wall-posts'>
                 {
                     posts &&
